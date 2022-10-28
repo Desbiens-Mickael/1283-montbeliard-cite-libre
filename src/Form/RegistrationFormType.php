@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
@@ -18,11 +19,37 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('username')
+            ->add('username', TextType::class, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer un nom',
+                    ]),
+                    new Length([
+                        'min' => 4,
+                        'minMessage' => 'Votre pseudo doit comporter au moins {{ limit }} caractères',
+                        // max length allowed by Symfony for security reasons
+                        'max' => 180,
+                        'maxMessage' => 'Votre pseudo ne doit pas dépassé {{ limit }} caractères'
+                    ]),
+                ]
+            ])
+            ->add('email', EmailType::class, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer une adresse email',
+                    ]),
+                    new Length([
+                        'min' => 6,
+                        'minMessage' => 'Votre adresse email doit comporter au moins {{ limit }} caractères',
+                        // max length allowed by Symfony for security reasons
+                        'max' => 255,
+                        'maxMessage' => 'Votre adresse email ne doit pas dépassé {{ limit }} caractères',
+                    ]),
+                ]
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'label' => 'J\'accepte les <a href="/general/conditions/use" target="_blank">CGU</a>',
                 'label_html' => true,
-
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
@@ -41,9 +68,10 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
+                        'maxMessage' => 'Votre mot de passe ne doit pas dépassé {{ limit }} caractères',
                     ]),
                 ],
             ])

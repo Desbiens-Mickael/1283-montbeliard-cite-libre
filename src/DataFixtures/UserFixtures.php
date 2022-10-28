@@ -29,6 +29,7 @@ class UserFixtures extends Fixture
                     $user,
                     'password' . $i . $j
                 );
+                $user->setEmail('student' . $i . $j . '@exemple.com');
                 $user->setPassword($hashedPassword);
                 $user->setClasse($this->getReference('classe_' . ClasseFixtures::CLASSES[$i]));
                 $manager->persist($user);
@@ -45,6 +46,7 @@ class UserFixtures extends Fixture
             $admin,
             'password'
         );
+        $admin->setEmail('admin@exemple.com');
         $admin->setPassword($hashedPassword);
         $manager->persist($admin);
 
@@ -57,6 +59,7 @@ class UserFixtures extends Fixture
             $superAdmin,
             'password'
         );
+        $superAdmin->setEmail('super.admin@exemple.com');
         $superAdmin->setPassword($hashedPassword);
         $manager->persist($superAdmin);
 
