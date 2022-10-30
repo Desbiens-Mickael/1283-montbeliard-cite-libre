@@ -39,10 +39,10 @@
 	</table>
 
 	{# display navigation #}
+    <a class="btn btn-outline-primary mt-2" href="{{ path('question_new') }}">
+        <i class="bi bi-plus-circle"></i>
+        Créer</a>
 	<div class="navigation ">
 		{{ knp_pagination_render(pagination) }}
 	</div>
-	<a class="btn btn-outline-primary mt-2" href="{{ path('question_new') }}">
-		<i class="bi bi-plus-circle"></i>
-		Créer</a>
 {% endblock %}

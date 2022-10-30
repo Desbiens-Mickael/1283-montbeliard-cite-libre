@@ -28,6 +28,7 @@ class GameType extends AbstractType
             ])
             ->add('classe', null, ['choice_label' => 'classe'])
             ->add('duration', IntegerType::class, [
+                'required' => false,
                 'label' => 'Durée souhaitée (max 60 minutes)',
                 'label_attr' => ['class' => 'fs-3 mt-3 p-2   shadow-sm'],
                 'attr' => [
@@ -50,7 +51,7 @@ class GameType extends AbstractType
                 'label_attr' => ['class' => 'fs-3 w-auto p-2  '],
                 'choices' => [
                     'Maître du jeu' => 'mdj',
-                    'Solo' => 'solo'
+                    'Solo (Bêta)' => 'solo'
                 ],
                 'attr' => [
                     'class' => 'form-check fw-bold '
