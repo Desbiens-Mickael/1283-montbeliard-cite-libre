@@ -21,7 +21,7 @@
     </table>
 
     <table class="table table-hover">
-    <tbody>
+        <tbody>
             <tr class="table-dark">
                 <th class="text-center" colspan="4">Partie jouée</th>
             </tr>
@@ -35,6 +35,10 @@
                     <td class="text-center"><a class="text-decoration-none" href="{{ path('summary', {'id': game.id}) }}">{{ game.name }}</a></td>
                     <td class="text-center">{{ game.duration }}</td>
                     <td class="text-center">{{ user.classe ? game.classe.classe : 'aucune classe' }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td class="text-center" colspan="3">aucune partie trouvée</td>
                 </tr>
             {% endfor %}
         </tbody>
