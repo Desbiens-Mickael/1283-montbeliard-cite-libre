@@ -95,6 +95,8 @@ class AdminManageUsersController extends AbstractController
             $user->setPassword($hashedPassword);
             $userRepository->add($user, true);
 
+            $this->addFlash('success', "L'utilisateur à été modifier avec succes.");
+
             return $this->redirectToRoute('manage_users_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -104,11 +106,15 @@ class AdminManageUsersController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, User $user, UserRepository $userRepository): Response
     {
+        dump($user);
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $userRepository->remove($user, true);
+            $this->addFlash('success', "L'utilisateur à été supprimer avec succes.");
+        } else {
+            $this->addFlash('danger', "L'utilisateur n'à pas été supprimer!");
         }
 
         return $this->redirectToRoute('manage_users_index', [], Response::HTTP_SEE_OTHER);
