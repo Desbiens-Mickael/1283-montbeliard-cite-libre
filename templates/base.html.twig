@@ -28,7 +28,7 @@
     {% include "include/_navbar.html.twig" %}
     <main id="swup">{% block body %}{% endblock %}</main>
     <audio loop src="{{ asset('build/sounds/musique.mp3') }}"
-           class="d-none" {{ stimulus_target('swup', 'audio') }}></audio>
+        class="d-none" {{ stimulus_target('swup', 'audio') }}></audio>
 
     {% include "include/_footer.html.twig" %}
 </body>

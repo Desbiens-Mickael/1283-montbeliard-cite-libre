@@ -114,7 +114,6 @@ class GameController extends AbstractController
 
         return $this->render('game/collection.html.twig', [
             'cards' => $cards,
-            'cardWons' => $cardWons,
             'cardWonsIds' => $cardWonsIds,
         ]);
     }

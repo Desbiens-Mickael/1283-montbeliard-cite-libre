@@ -55,10 +55,10 @@
     position: relative;
     height: 300px;
     width: 225px;
-    perspective: 1000px; /* Supprimez cette option si vous ne voulez pas de l'effet 3D. */
+    perspective: 1000px; /* Remove this option if you do not want the 3D effect. */
 }
 
-/* Ce conteneur est nécessaire pour positionner les côtés avant et arrière. */
+/* This container is needed to position the front and back sides. */
 .flip-card-inner {
     width: 100%;
     height: 100%;
@@ -67,20 +67,20 @@
     transform-style: preserve-3d;
 }
 
-/* Effectuer un retournement horizontal lorsque vous passez la souris
- sur le conteneur de la boîte de retournement. */
+/* Perform a horizontal flip when you move the mouse over the
+ on the container of the flip box. */
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
 }
 
-/* Positionner le côté avant et arrière */
+/* Position the front and back side */
 .flip-card-front, .flip-card-back {
     position: absolute;
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
 }
 
-/* Coiffez l'arrière */
+/* Style the back */
 .flip-card-back {
     transform: rotateY(180deg);
 }

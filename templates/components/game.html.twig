@@ -68,11 +68,14 @@
 				{% endif %}
 
 
-				<a class="btn-classeur btn btn-primary mb-5 w-50" href="{{ path('game_collection') }}">Classeur de
-																																																												                    cartes</a>
-				<div>
-					<a href="{{ path('game_reset') }}" class="btn-classeur btn btn-primary mb-5 w-25 ">Reset</a>
-				</div>
+				<a class="btn-classeur classeur btn btn-primary mb-2 w-100" href="{{ path('game_collection') }}">
+                    Classeur de cartes
+                </a>
+
+				<a href="{{ path('game_reset') }}" class="btn-classeur btn btn-primary w-50 ">
+                    Reset
+                </a>
+
 			</div>
 
             {# widget-top #}
@@ -137,7 +140,7 @@
 
 
                     <div id="dice" data-side="{{ this.roll }}"
-                         class="{% if this.reRoll %}reRoll{% endif %} {% if this.roll == false %}d-none{% endif %}">
+                        class="{% if this.reRoll %}reRoll{% endif %} {% if this.roll == false %}d-none{% endif %}">
                         <div class="sides side-1">
                             <span class="dot-dice dot-1"></span>
                         </div>
@@ -177,14 +180,14 @@
                     <div class="loader" data-loading="addClass(d-block)" >
 						<img src="{{ asset('build/images/loader.svg') }}" alt="chargement"></div>
 
-                    <a class="mx-auto d-inline btn-dice btn btn-secondary my-5" href="#"
+                    <a class="mx-auto d-inline btn-dice btn btn-secondary mt-3" href="#"
                        data-action-name="setQuestion()" data-action="live#action">
                         Lancer le dé
                     </a>
 
 
                     {% if this.question and this.answered == false %}
-                        <button class="mx-auto show-modal btn btn-one my-5" {{ stimulus_action('game', 'openModal') }}>
+                        <button class="mx-auto show-modal btn btn-one mt-3" {{ stimulus_action('game', 'openModal') }}>
                             Afficher la question active
                         </button>
 
@@ -252,12 +255,12 @@
 
 
         <div id="myModal" class="card-parchment card-parchment--modal
-			 {% if this.roll and this.answered == false %}card-parchment--modal-auto-show{% else %}d-none{% endif %}" {{ stimulus_target('game', 'modal') }}>
+			{% if this.roll and this.answered == false %}card-parchment--modal-auto-show{% else %}d-none{% endif %}" {{ stimulus_target('game', 'modal') }}>
             <div class="parchment-background"></div>
             <div class="parchment-body">
                 <button aria-label="close" class="close-modal" {{ stimulus_action('game', 'closeModal') }}></button>
                 {% if this.question %}
-                    <p class="fs-3 mb-1">
+                    <p class="fs-3">
                         Niveau
                         {{ this.question.getLevel }}
                     </p>
@@ -266,9 +269,9 @@
 
                 {% endif %}
                 {% if this.roll == 1 %}
-                    <div class="d-flex justify-content-center mt-5">
+                    <div class="d-flex justify-content-center">
                         <img class="right-img" src="{{ asset('build/images/dos_apocalypse.svg') }}"
-                             alt="dos apocalypse">
+                            alt="dos apocalypse">
                     </div>
 
                     <h1>Pas de chance vous avez tiré une carte apocalypse !!
@@ -276,10 +279,10 @@
                     <p>
                         Cliquez ici pour découvrir les effets :
                     </p>
-                    <div class="d-flex justify-content-center mt-5">
-                        <a href="#" id="p" class="btn btn-one bg-white bg-opacity-75 me-5 w-25 close"
-                           data-action-name="nextTurn"
-                           data-action="live#action" {{ stimulus_action('game', 'closeModal') }}>Effets</a>
+                    <div class="d-flex justify-content-center mt-2">
+                        <a href="#" id="p" class="btn btn-one bg-white bg-opacity-75 mx-auto w-25 close"
+                            data-action-name="nextTurn"
+                            data-action="live#action" {{ stimulus_action('game', 'closeModal') }}>Effets</a>
 
                     </div>
                 {% endif %}
@@ -300,7 +303,7 @@
                                 {% if this.answer %}
                                     <p>{{ this.answer.content }}</p>
                                 {% endif %}
-                                <div class="d-flex justify-content-center mt-5">
+                                <div class="d-flex justify-content-evenly mt-3">
                                     <a href="#" id="p" class="btn btn-one bg-white bg-opacity-75 me-5 w-25 close"
                                        data-action-name="goodAnswer"
                                        data-action="live#action" {{ stimulus_action('game', 'closeModal') }}>Bonne

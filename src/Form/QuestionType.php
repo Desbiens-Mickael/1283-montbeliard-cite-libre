@@ -24,6 +24,7 @@ class QuestionType extends AbstractType
             ->add('level', IntegerType::class, [
                 'label' => 'Niveau'
             ])
+            // nesting of the response form.
             ->add('answers', CollectionType::class, [
                 'entry_type' => RightAnswerType::class,
                 'allow_add' => true,

@@ -11,18 +11,17 @@
         right: 0;
         z-index: -1;
         opacity: 0.5;
-        background-image: url('/assets/images/plateau_vide.jpg');
+        background-image: url("/assets/images/plateau_vide.jpg");
         @include media-breakpoint-down(lg) {
-            background-image: url('/assets/images/plateau_vide_phone.jpg');
+            background-image: url("/assets/images/plateau_vide_phone.jpg");
         }
         background-repeat: no-repeat;
         background-size: cover;
     }
 }
 
-
 [class^="bloc"] {
-    background-image: url('/assets/images/bloc.svg');
+    background-image: url("/assets/images/bloc.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -36,13 +35,12 @@
 }
 
 .bloc-time {
-    background-image: url('/assets/images/bloc_time.svg');
+    background-image: url("/assets/images/bloc_time.svg");
     color: $light;
 }
 
-
 .body-game {
-    background-image: url('/assets/images/plateau_jeu.jpg');
+    background-image: url("/assets/images/plateau_jeu.jpg");
     background-repeat: no-repeat;
     height: 100vh;
     overflow: auto;
@@ -65,7 +63,7 @@
         justify-content: space-evenly;
         align-items: start;
         flex-wrap: wrap;
-        margin: 0 100px;
+        margin: 0 auto;
         @include media-breakpoint-down(lg) {
             justify-content: start;
         }
@@ -100,36 +98,35 @@
         flex-wrap: wrap;
     }
 
-    p.size-response {
+    p.size-response  {
         font-size: 4rem;
     }
 
     @include media-breakpoint-down(lg) {
-        background-image: url('/assets/images/plateau_jeu_phone.jpg');
+        background-image: url("/assets/images/plateau_jeu_phone.jpg");
         position: relative;
     }
 
     p {
-        font-family: 'Manuale', serif;
+        font-family: "Manuale", serif;
     }
 
     .left-img {
         height: 242px;
     }
 
-    .show-allcard {
-        display: none;
-    }
+    // .show-allcard {
+    //     display: none;
+    // }
 
     .btn-dice {
         height: fit-content;
     }
 
-
     @include media-breakpoint-up(lg) {
-        .classeur {
-            display: none !important;
-        }
+        // .classeur {
+        //     display: none !important;
+        // }
 
         .show-card {
             min-width: 130px;
@@ -142,10 +139,9 @@
             background-color: $dark;
             color: $light;
             font-size: 0.8rem;
-            font-family: 'Manuale';
+            font-family: "Manuale";
             box-shadow: 1px 2px 3px 2px rgba(255, 255, 255, 0.38) inset;
             z-index: -1;
-
         }
 
         .card-won {
@@ -155,12 +151,10 @@
         .show-card:hover {
             transform: translateX(20px) scale(1.2);
 
-
             .card-won {
                 display: inherit;
                 z-index: 3000;
                 height: 180px;
-
             }
         }
 
@@ -185,7 +179,7 @@
 
             h2 {
                 margin-bottom: 5px;
-                font-family: 'Manuale';
+                font-family: "Manuale";
                 color: $dark;
                 text-decoration: underline $primary;
             }
@@ -195,11 +189,8 @@
                 transform: translateX(20px) scale(1.2);
             }
         }
-
     }
-
 }
-
 
 .cardgame {
     height: 250px;
@@ -212,7 +203,7 @@
 .question-card,
 .question-card-selected {
     --question-card-size: 150px;
-    background-image: url('/assets/images/dos_artisans.jpg');
+    background-image: url("/assets/images/dos_artisans.jpg");
     display: flex;
     justify-content: center;
     align-items: center;
@@ -239,7 +230,7 @@
     }
 }
 .widget {
-    padding: .5rem;
+    padding: 0.5rem;
     margin-left: 1rem;
     font-weight: 600;
     .widget-icon-audio {
@@ -275,7 +266,7 @@
     }
     .widget-badge {
         --widget-badge-size: 75px;
-        padding: .5rem;
+        padding: 0.5rem;
         text-align: center;
         min-width: var(--widget-badge-size);
         @include media-breakpoint-down(lg) {
@@ -283,9 +274,71 @@
         }
     }
     .widget-text {
-        margin-bottom: .5rem;
+        margin-bottom: 0.5rem;
         @include media-breakpoint-down(lg) {
             display: none;
         }
+    }
+}
+@media (max-width: 900px) {
+    .body-game:before {
+        content: "";
+        background-color: #212529;
+        z-index: 10000;
+        opacity: 0.9;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    .body-game::after {
+        content: "";
+        background-image: url("/assets/images/mobile-paysage.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 10001;
+        opacity: 0.9;
+        position: absolute;
+        background-size: 200px 180px;
+        width: 100%;
+        height: 100%;
+        animation: arow-rotate infinite 2s;
+    }
+    .show-allcard {
+        display: none;
+    }
+    .body-game {
+        overflow: hidden;
+    }
+}
+@media (orientation: landscape) {
+    .body-game:before {
+        display: none;
+    }
+    .body-game::after {
+        display: none;
+    }
+    .show-allcard {
+        display: block;
+    }
+    .body-game {
+        overflow: auto;
+        .alert-secondary {
+            font-size: 16px;
+            margin-top: 1rem;
+            margin-bottom: 0;
+        }
+    }
+}
+
+@keyframes arow-rotate {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    50% {
+        transform: rotateZ(89deg);
+    }
+    100% {
+        transform: rotateZ(90deg);
+        opacity: 0;
     }
 }

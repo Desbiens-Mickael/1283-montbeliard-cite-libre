@@ -1,17 +1,17 @@
-//fs-1 text-primary bg-dark fw-bold px-3
 .list-qcm {
     list-style: none;
     text-align: left;
-    width: 80ch;
+    width: 100%;
     margin: 0 auto;
     > li {
         position: relative;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
+        margin-left: 2rem;
         a {
             display: flex;
             align-items: center;
             color: $dark;
-            font-size: $h5-font-size;
+            font-size: $h6-font-size;
             line-height: 1.25;
             .qcm-index {
                 --index-size: 40px;
@@ -36,5 +36,91 @@
                 }
             }
         }
+    }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+    .list-qcm {
+        width: 94%;
+    }
+    .body-game .dices,
+    .blason {
+        display: none;
+    }
+    .widget .widget-icon {
+        padding: 0 0.4rem;
+        min-height: 40px;
+    }
+    .cardgame {
+        height: auto;
+        width: auto;
+        border-radius: 4px;
+    }
+    .body-game .left-img,
+    .body-game .right-img {
+        height: 150px;
+    }
+    .body-game {
+        grid-template-rows: 15vh 71vh 14vh;
+    }
+    .deck-left p {
+        margin-right: -1rem !important;
+    }
+    .deck-right p {
+        margin-left: -1rem !important;
+    }
+    .show-allcard {
+        position: absolute;
+        top: 200px;
+        left: -21px;
+        .classeur {
+            transform: translateX(-83px);
+        }
+        .btn-classeur {
+            padding: 0;
+        }
+        h2,
+        .show-card {
+            display: none;
+        }
+    }
+    .btn-dice {
+        padding: 0.1rem 0.5rem;
+    }
+    .card-parchment {
+        width: 100%;
+        left: 0;
+        .parchment-background {
+            top: -177px;
+            left: -53px;
+            right: -65px;
+            bottom: -173px;
+        }
+        .parchment-body {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            .right-img {
+                width: 100px;
+            }
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            .mt-5 {
+                margin-top: 1rem !important;
+            }
+            .me-5 {
+                margin-right: 0 !important;
+            }
+        }
+    }
+    .popup-collection {
+        height: inherit;
+        top: 0;
+        margin: 0 !important;
+        z-index: 100000;
     }
 }

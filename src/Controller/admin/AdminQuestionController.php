@@ -45,7 +45,6 @@ class AdminQuestionController extends AbstractController
             10 /*limit per page*/
         );
 
-
         return $this->renderForm('admin/question/index.html.twig', [
             'pagination' => $pagination,
             'form' => $form

@@ -81,15 +81,19 @@ class QuestionRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findLikeQuestion(string $question): array
+    /**
+     * @return Question[] Returns an array of Question objects
+     */
+    public function findLikeQuestion(string $keyword): array
     {
         return $this->createQueryBuilder('q')
-            ->where('q.content LIKE :question')
-            ->setParameter('question', '%' . $question . '%')
+            ->where('q.content LIKE :keyword')
+            ->setParameter('keyword', '%' . $keyword . '%')
             ->orderBy('q.content', 'DESC')
             ->getQuery()
             ->getResult();
     }
+
     //    /**
     //     * @return Question[] Returns an array of Question objects
     //     */
